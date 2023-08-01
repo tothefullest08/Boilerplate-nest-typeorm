@@ -1,3 +1,3 @@
 import { User } from '@src/user/entity/user.entity';
 
-export type UserResponse = Omit<User, 'authentications' | 'members'>;
+export type UserResponse = Pick<User, 'id' | 'nickname' | 'createdAt' | 'updatedAt'>;
