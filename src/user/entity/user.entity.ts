@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Authentication } from '@src/auth/entity/auth.entity';
 
 @Entity('user')
 export class User {
@@ -12,10 +13,8 @@ export class User {
 
   /**
    * 닉네임
-   * @minLength 1
-   * @maxLength 5
    */
-  @Column({ name: 'nickname', length: 16 })
+  @Column({ name: 'nickname', length: 32 })
   nickname!: string;
 
   /**
@@ -33,4 +32,10 @@ export class User {
    */
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp with time zone' })
   updatedAt!: Date | string;
+
+  /**
+   * OneToMany Authentication
+   */
+  @OneToMany(() => Authentication, (authentication) => authentication.user)
+  authentications!: Authentication[];
 }
