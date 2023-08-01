@@ -11,10 +11,10 @@ import { CustomRepository } from '@src/common/database/custom-typeorm.decorator'
 export class UserRepository extends Repository<User> {
   private readonly logger = new Logger(UserRepository.name);
 
-  async createUser(nickname: string, profileImageName: string): Promise<User> {
-    return await this.save({ nickname, profileImageName }).catch((e) => {
+  async createUser(nickname: string): Promise<User> {
+    return await this.save({ nickname }).catch((e) => {
       this.logger.error(`유저 생성 실패,  nickname: ${nickname}, e: ${e}`);
-      throw new InternalException(ErrorTypeEnum.GET_DATA_ERROR, `유저 생성 조회 실패`);
+      throw new InternalException(ErrorTypeEnum.CREATE_DATA_ERROR, `유저 생성 실패`);
     });
   }
 

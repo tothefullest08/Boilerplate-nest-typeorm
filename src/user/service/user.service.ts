@@ -21,7 +21,7 @@ export class UserService {
     return (await this.getUsers({ userIds: [userId] }))[0];
   }
 
-  async createUser(nickname: string, profileImageName: string): Promise<User> {
-    return this.userRepository.createUser(nickname, profileImageName);
+  async createUser(nickname: string): Promise<User> {
+    return this.userRepository.createUser(nickname);
   }
 }

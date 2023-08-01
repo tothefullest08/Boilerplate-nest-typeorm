@@ -1,10 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 
 import { UserService } from '@src/user/service/user.service';
 import { TypedParam, TypedRoute } from '@nestia/core';
 import { BaseResponse } from '@src/common/interface/http.response';
 import { UserResponse } from '@src/user/interface/user.response';
+import { JwtAccessTokenGuard } from '@src/auth/jwt/access-token.guard';
 
+@UseGuards(JwtAccessTokenGuard)
 @Controller('users/v1')
 export class UserController {
   constructor(private readonly userService: UserService) {}

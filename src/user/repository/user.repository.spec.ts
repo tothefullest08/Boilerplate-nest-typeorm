@@ -30,18 +30,13 @@ describe('UserRepository', () => {
     await dataSource.synchronize();
   });
 
-  afterAll(async () => {
-    await dataSource.dropDatabase();
-    await dataSource.destroy();
-  });
-
   describe('createUser', () => {
     it('유저 생성 성공', async () => {
-      const dto = { nickname: 'nickname', profileImageName: 'profileImageName' };
+      const nickname = 'nickname';
 
-      const res = await userRepo.createUser(dto.nickname, dto.profileImageName);
+      const res = await userRepo.createUser(nickname);
 
-      expect(res.nickname).toEqual(dto.nickname);
+      expect(res.nickname).toEqual(nickname);
     });
   });
 
