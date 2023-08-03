@@ -9,9 +9,9 @@ const config: INestiaConfig = {
     output: 'dist/swagger.json',
     security: {
       bearer: {
-        type: 'apiKey',
-        name: 'Authorization',
-        in: 'header',
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
       },
     },
     servers: [
