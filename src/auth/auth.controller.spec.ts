@@ -62,7 +62,7 @@ describe('AuthController', () => {
 
       const res = await supertest.agent(app.getHttpServer()).post('/auth/v1/sign-up').send(data);
 
-      expect(res.statusCode).toEqual(200);
+      expect(res.statusCode).toEqual(201);
       expect(res.body.data).toEqual({
         id: expect.any(String),
         userId: expect.any(String),
@@ -99,7 +99,7 @@ describe('AuthController', () => {
 
       const res = await supertest.agent(app.getHttpServer()).post('/auth/v1/sign-in').send(data);
 
-      expect(res.statusCode).toEqual(200);
+      expect(res.statusCode).toEqual(201);
       expect(res.body.data).toEqual({
         id: expect.any(String),
         userId: expect.any(String),
