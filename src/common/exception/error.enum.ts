@@ -16,6 +16,7 @@ export enum ErrorTypeEnum {
   DUPLICATE_ERROR = 'duplicate_error',
   NOT_FOUND_ERROR = 'not_found_error',
 
+  REQUEST_NOT_ROUND_ERROR = 'request_not_found_error',
   INTERNAL_ERROR = 'internal_error',
   THIRD_PARTY_ERROR = 'third_party_error',
 }
